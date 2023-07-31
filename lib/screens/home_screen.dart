@@ -32,6 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content:
+                        Text("Если хотите удалить контакт свайпните влево!"),
+                    duration: Duration(seconds: 3),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.info_outline),
+            ),
+          ],
           title: const Text("Мои контакты"),
           centerTitle: true,
         ),
@@ -78,8 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
           separatorBuilder: (BuildContext context, int index) {
-            return Divider(
+            return const Divider(
               height: 4,
+              color: Colors.blue,
             );
           },
         ),

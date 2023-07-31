@@ -10,12 +10,23 @@ class InfoContact extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          getTitleAndSubtitle("Название контакта: ", selectContact.name),
-          getTitleAndSubtitle("Номер телефона: ", selectContact.phoneNumber),
-          getTitleAndSubtitle("Электронный адрес: ", selectContact.email),
-        ]),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 200,
+              child: Icon(
+                Icons.account_box,
+                size: 140,
+                color: Colors.blue,
+              ),
+            ),
+            getTitleAndSubtitle("Название контакта: ", selectContact.name),
+            getTitleAndSubtitle("Номер телефона: ", selectContact.phoneNumber),
+            getTitleAndSubtitle("Электронный адрес: ", selectContact.email),
+          ],
+        ),
       ),
     );
   }
@@ -26,16 +37,16 @@ class InfoContact extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        Divider(
-          height: 2,
+        const Divider(
+          height: 10,
         ),
         Text(
           subtitle,
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 16),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
       ],
