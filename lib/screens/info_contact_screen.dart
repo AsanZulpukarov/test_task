@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:test_task/models/contact.dart';
 
 class InfoContact extends StatelessWidget {
-  Contact selectContact;
-  InfoContact({Key? key, required this.selectContact}) : super(key: key);
+  final Contact selectContact;
+  const InfoContact({Key? key, required this.selectContact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
