@@ -55,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             final item = HomeScreen.contacts.elementAt(index);
             return Dismissible(
               key: Key(item.phoneNumber),
+              direction: DismissDirection.endToStart,
               onDismissed: (direction) {
                 setState(() {
                   HomeScreen.contacts.removeAt(index);

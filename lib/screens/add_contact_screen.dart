@@ -20,13 +20,28 @@ class _AddContactScreenState extends State<AddContactScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  final FocusNode _nameFocusNode = FocusNode();
+  final FocusNode _phoneNumberFocusNode = FocusNode();
+  final FocusNode _emailFocusNode = FocusNode();
+
   @override
   void dispose() {
     // TODO: implement dispose
     _nameController.dispose();
     _phoneNumberController.dispose();
     _emailController.dispose();
+    _nameFocusNode.dispose();
+    _phoneNumberFocusNode.dispose();
+    _emailFocusNode.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 500), () {
+      FocusScope.of(context).requestFocus(_nameFocusNode);
+    });
   }
 
   @override
@@ -45,6 +60,10 @@ class _AddContactScreenState extends State<AddContactScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
+                  focusNode: _nameFocusNode,
+                  onFieldSubmitted: (value) {
+                    FocusScope.of(context).requestFocus(_phoneNumberFocusNode);
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста, введите название контакта';
@@ -63,6 +82,10 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   height: 20,
                 ),
                 TextFormField(
+                  focusNode: _phoneNumberFocusNode,
+                  onFieldSubmitted: (value) {
+                    FocusScope.of(context).requestFocus(_emailFocusNode);
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста, введите номер телефона';
@@ -82,6 +105,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   height: 20,
                 ),
                 TextFormField(
+                  focusNode: _emailFocusNode,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста, введите адрес электронной почты';
